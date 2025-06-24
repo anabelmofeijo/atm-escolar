@@ -2,7 +2,8 @@ from app import FastAPI, CORSMiddleware
 from app.routers import (
     payment_router,
     student_router,
-    exam_router
+    exam_router,
+    proof
 )
 from app.core.config import Base, engine
 from app.models import (
@@ -28,6 +29,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(student_router.router, prefix="/api/v1/student", tags=["student"])
 app.include_router(payment_router.router, prefix="/api/v1/payment", tags=["payment"])
 app.include_router(exam_router.router, prefix="/api/v1/exam", tags=["exam"])
+app.include_router(proof.router, prefix="/api/v1/proof", tags=["proof"])
 
 
 @app.get("/")
