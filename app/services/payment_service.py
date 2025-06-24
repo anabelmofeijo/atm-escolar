@@ -15,7 +15,7 @@ class PaymentService:
             return {"PaymentCreated": new_data}
         
     @staticmethod
-    def DeletePayment(id: int):
+    def DeletePayment(id: int): 
         with SessionLocal() as db:
             data = db.query(Payment).get(id)
             if data:

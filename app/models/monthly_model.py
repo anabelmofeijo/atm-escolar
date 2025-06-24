@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 from app.core.config import Base
 from datetime import datetime
 
-
 class MonthlyPayment(Base):
     __tablename__ = "monthly_payments"
 
@@ -12,7 +11,7 @@ class MonthlyPayment(Base):
     month = Column(Integer, nullable=False)  # 1-12
     grade = Column(Integer, nullable=False)
     amount = Column(Float, nullable=False)
-    status = Column(String, default="pendente")  # ou "pago", "atrasado"
+    status = Column(String, default="pendente")
     paid_at = Column(DateTime, nullable=True)
     method = Column(String, nullable=False)
 
