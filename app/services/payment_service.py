@@ -55,7 +55,7 @@ class MonthlyPaymentService:
     @staticmethod
     def DeletePayment(id: int):
         with SessionLocal() as db:
-            data = db.query(MonthlyPayment).get(id)
+            data = db.query(MonthlyPayment).filter(MonthlyPayment.id == id).first()
             if data:
                 db.delete(data)
                 db.commit()

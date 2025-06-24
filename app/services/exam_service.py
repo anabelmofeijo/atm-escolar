@@ -1,5 +1,5 @@
 from app.models.exam_model import Exam
-from core.config import SessionLocal
+from app.core.config import SessionLocal
 
 
 class ExamService:
