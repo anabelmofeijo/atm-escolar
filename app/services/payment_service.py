@@ -1,6 +1,12 @@
 from app.models.payment_model import Payment
 from  app.models.monthly_model import MonthlyPayment
 from app.core.config import SessionLocal
+from app.services.send_email import email
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+caminho_pdf = os.path.join(BASE_DIR, "comprovativo.pdf")
 
 
 class PaymentService:
@@ -12,6 +18,7 @@ class PaymentService:
             db.add(new_data)
             db.commit()
             db.refresh(new_data)
+            email.enviar_comprovativo(destinatario_email="ambrosiozambote@gmail.com", caminho_pdf=caminho_pdf)
             return {"PaymentCreated": new_data}
         
     @staticmethod
