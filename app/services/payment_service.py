@@ -57,6 +57,7 @@ class MonthlyPaymentService:
             db.add(new_data)
             db.commit()
             db.refresh(new_data)
+            email.enviar_comprovativo(destinatario_email="ambrosiozambote@gmail.com", caminho_pdf=caminho_pdf)
             return {"PaymentCreated": new_data}
         
     @staticmethod
